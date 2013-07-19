@@ -1,7 +1,7 @@
 % This is a template for a CMU ECE dissertation.  It conforms to the
 % requirements from ECE as of May 2013.  Most importantly, the title
 % page is formatted as per ECE standards and does not contain the list
-% of committee members.  This template is modified from cmuthesis.cls,
+% of committee members.  This template was modified from cmuthesis.cls,
 % published by David Koes (www.cs.cmu.edu/~dkoes).  The next comment
 % block is from the original cmuthesis.cls file.
 
