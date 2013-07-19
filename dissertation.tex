@@ -1,0 +1,218 @@
+% For a more compact document, add the option openany to avoid
+% starting all chapters on odd numbered pages
+\documentclass[12pt, pdftex]{cmu_ece_dissertation}
+
+% This is a template for a CMU ECE dissertation.  It conforms to the
+% requirements from ECE as of May 2013.  Most importantly, the title
+% page is formatted as per ECE standards and does not contain the list
+% of committee members.  This template is modified from cmuthesis.cls,
+% published by David Koes (www.cs.cmu.edu/~dkoes).  The next comment
+% block is from the original cmuthesis.cls file.
+
+%This is a template for a CMU thesis.  It is 18 pages without any content :-)
+% The source for this is pulled from a variety of sources and people.
+% Here's a partial list of people who may or may have not contributed:
+%
+%        bnoble   = Brian Noble
+%        caruana  = Rich Caruana
+%        colohan  = Chris Colohan
+%        jab      = Justin Boyan
+%        josullvn = Joseph O'Sullivan
+%        jrs      = Jonathan Shewchuk
+%        kosak    = Corey Kosak
+%        mjz      = Matt Zekauskas (mattz@cs)
+%        pdinda   = Peter Dinda
+%        pfr      = Patrick Riley
+%        dkoes = David Koes
+%        rajas = Raja Sambasivan
+
+% David Koes's mmain contribution was putting everything into a single
+% class files and small template.  Raja Sambasivan updated the
+% template and also changed it so as to conform to ECE standards.
+
+% rajas: include just packages I think are probably necessary...
+\usepackage{amsmath}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{ragged2e}
+\usepackage{algorithm2e}
+\usepackage{color}
+\usepackage{url}
+\usepackage{bigfoot}
+\usepackage{setspace}
+  \onehalfspacing
+\usepackage[textwidth=0.9in, textsize=small, shadow, disable]{todonotes}
+\usepackage{sectsty}
+   \allsectionsfont{\sffamily}
+\usepackage{totcount}
+   \regtotcounter{chapter}
+
+\ifx\pdfoutput\undefined
+  % we are running LaTeX, not pdflatex
+  \usepackage{graphicx}
+\else
+% we are running pdflatex, so convert .eps files to .pdf
+  \def\pdfshellescape{1}
+  \usepackage[pdftex]{graphicx}
+  \usepackage{epstopdf}
+  \usepackage[protrusion=true,expansion=true]{microtype}
+\fi
+
+\usepackage[numbers, square, comma, sort]{natbib}
+
+% rajas: For a beautiful dissertation, use Minion Pro and Myriad Pro
+% as default fonts.  If you have these fonts installed, uncomment the
+% lines below.  If not, the fonts can be installed by following the
+% directions at: 
+% Minion Pro: 
+%   * http://kieranhealy.org/blog/archives/2012/11/10/installing-minion-pro/
+%   * http://jklukas.blogspot.com/2010/02/installing-minionpro-tex-package.html
+% Myriad Pro: 
+%   * http://www.gaehrken.de/fonts/MyriadPro.txt
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+%\usepackage{MinionPro}
+%\usepackage{MnSymbol}
+%\usepackage{MyriadPro}
+%\renewcommand{\sfdefault}{MyriadPro-LF}
+
+\usepackage[letterpaper,twoside,inner=1.3in,outer=1.3in,bottom=1.3in,top=1.3in]{geometry}
+
+\usepackage[%
+  hypcap=true,
+  font=small,
+  labelfont=bf
+]{caption}
+\usepackage[hypcap=true]{subcaption}
+\usepackage[%
+  pdftex,             % using pdftex
+  pagebackref=true,   % backreferences
+  pageanchor=true,
+  plainpages=false, 
+  pdfpagelabels, 
+  bookmarks,
+  bookmarksnumbered,
+  colorlinks=true,
+  urlcolor=blue,
+  filecolor=blue,
+  linkcolor=black,
+  citecolor=black,
+  pdftitle={},
+  pdfauthor={},
+  pdfsubject={PhD thesis},
+  pdfkeywords={},
+  pdfproducer={pdfLaTeX},
+  %pdfborder=0 0 0,  %removes outlines around hyper links in online display
+]{hyperref}
+
+% Make backreferences in the bibliography pretty
+\usepackage[hyperpageref]{backref} 
+   \renewcommand*{\backref}[1]{}  
+   \renewcommand*{\backrefalt}[4]{
+      \ifcase #1 
+         Not cited.
+      \or
+         Cited on page #2.
+      \else
+         Cited on pages #2.
+      \fi}
+
+% The following margin commands are needed by \todonotes
+\setlength{\marginparwidth}{1.5cm}
+\setlength{\marginparsep}{1cm}
+
+% Prevent latex from splitting footnotes across many pages
+%\interfootnotelinepenalty=9999
+
+% Provides a draft mark at the top of the document. 
+\draftstamp{\today}{DRAFT}
+
+\begin{document} 
+
+\frontmatter
+
+%initialize page style, so contents come out right (see bot) -mjz
+\pagestyle{empty}
+
+\title{\bf \textsf{My dissertation!!}}
+\author{}
+\date{June}
+\Year{1981}
+\trnumber{XXX-XXXX}
+
+\degrees{
+B.S., Electrical \& Computer Engineering, Carnegie Mellon University\\
+M.S., Electrical \& Computer Engineering, Carnegie Mellon University\\
+}
+
+\support{}
+\disclaimer{}
+
+% copyright notice generated automatically from Year and author.
+% permission added if \permission{} given.
+
+\keywords{}
+\maketitle
+
+\begin{dedication}
+To my dog.
+\end{dedication}
+
+\begin{keywordspage}
+\end{keywordspage}
+\pagestyle{plain} % for toc, was empty
+
+\clubpenalty=9999
+\widowpenalty=9999
+
+\begin{abstract}
+This dissertation is amazingly important.
+\end{abstract}
+
+\begin{acknowledgments}
+I thank...
+\end{acknowledgments}
+
+\tableofcontents
+\listoffigures
+\listoftables
+
+\mainmatter
+
+%% Double space document for easy review:
+%\renewcommand{\baselinestretch}{1.66}\normalsize
+
+% dkoes's comments for cmuthesis.cls, which was originally designed for
+% CS dissertations: 
+% The other requirements Catherine has:
+%
+%  - avoid large margins.  She wants the thesis to use fewer pages, 
+%    especially if it requires colour printing.
+%
+%  - The thesis should be formatted for double-sided printing.  This
+%    means that all chapters, acknowledgements, table of contents, etc.
+%    should start on odd numbered (right facing) pages.
+%
+%  - You need to use the department standard tech report title page.  I
+%    have tried to ensure that the title page here conforms to this
+%    standard.
+%
+%  - Use a nice serif font, such as Times Roman.  Sans serif looks bad.
+%
+% Other than that, just make it look good...
+
+% rAdd other .tex files in input.tex
+% \input{input.tex}
+
+\backmatter
+
+%\renewcommand{\baselinestretch}{1.0}\normalsize
+% By default \bibsection is \chapter*, but we really want this to show
+% up in the table of contents and pdf bookmarks.
+\renewcommand{\bibsection}{\chapter{\bibname}}
+%\setlength\bibsep{0pt plus 1pt}
+%\newcommand{\bibpreamble}{This text goes between the ``Bibliography''
+%  header and the actual list of references}
+\bibliographystyle{plain}
+\bibliography{} %your bib file
+\end{document}
