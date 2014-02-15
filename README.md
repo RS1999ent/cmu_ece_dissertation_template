@@ -30,8 +30,8 @@ next comment block below is from the original cmuthesis.cls file.
 %        rajas = Raja Sambasivan
 
 David Koes's mmain contribution was putting everything into a single
-class files and small template.  Raja Sambasivan updated the
-template and also changed it so as to conform to ECE standards.
+class files and small template.  I (Raja) updated the
+modified the template so as to make conform to ECE standards.
 
-Feel free to modify the tempalte as you wish and to contribute
+Feel free to modify the template as you wish and to contribute
 improvements back to this repository.
